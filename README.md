@@ -11,6 +11,14 @@ open a terminal and execute
 ```
        mysql -u root -p < chat.sql``
 ```
+
+3. Update mysql connection params  in the the file ``chat-mvc/src/Model/Repository.php``
+```
+    $host = '127.0.0.1';
+    $db = 'chat';
+    $user = 'root';
+    $pass = 'root';
+```
 ## How to run it
 
 
