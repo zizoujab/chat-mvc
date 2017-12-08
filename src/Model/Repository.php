@@ -22,7 +22,7 @@ abstract class Repository
     {
         //@todo move those to config file
         $host = '127.0.0.1';
-        $db = 'chatt';
+        $db = 'chat';
         $user = 'root';
         $pass = 'root';
         $charset = 'utf8mb4';
