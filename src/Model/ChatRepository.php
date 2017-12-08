@@ -13,8 +13,8 @@ class ChatRepository extends Repository
         $db = self::getDbConnection();
         $sql = 'INSERT INTO ' . static::$tableName . '(sender,receiver,msg, created_at) values (:sender,:receiver,:msg, :created_at)';
         $stmt = $db->prepare($sql);
-        $stmt->execute(['first_user' => $chat->getSender()->getId(),
-            'second_user' => $chat->getReceiver()->getId(),
+        $stmt->execute(['sender' => $chat->getSender()->getId(),
+            'receiver' => $chat->getReceiver()->getId(),
             'msg' => $chat->getMsg(),
             'created_at' => $chat->getCreatedAt()
         ]);
@@ -43,7 +43,7 @@ class ChatRepository extends Repository
         //@todo not too clean , needs improvement
         $db = self::getDbConnection();
         $query = 'SELECT * FROM ' . static::$tableName
-            . ' WHERE ((first_user=:current_usr AND second_user=:partner) OR (first_user=:partner1 AND second_user=:current_usr1))';
+            . ' WHERE ((sender=:current_usr AND receiver=:partner) OR (sender=:partner1 AND receiver=:current_usr1))';
         $params = ['current_usr' => $currentUserId,
             'partner' => $partnerId,
             'current_usr1' => $currentUserId,
